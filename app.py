@@ -183,6 +183,20 @@ def main():
                         ref["headline"], ref["subheadline"]
                     )
 
+                    # Display prompts and references
+                    with st.expander("🔍 View Prompts & References", expanded=False):
+                        st.subheader("System Prompt")
+                        st.code(system_prompt, language="text")
+
+                        st.subheader("User Prompt")
+                        st.code(user_prompt, language="text")
+
+                        st.subheader("Reference Translation")
+                        st.json({
+                            "headline": ref["headline"],
+                            "subheadline": ref["subheadline"]
+                        })
+
                     # Translate
                     with st.spinner(f"Translating to {language}..."):
                         try:
@@ -194,6 +208,7 @@ def main():
                                 result = translate_claude(system_prompt, user_prompt, "sonnet")
 
                             # Display results
+                            st.subheader("Translation Output")
                             h_match = result["headline"].lower() == ref["headline"].lower()
                             s_match = result["subheadline"].lower() == ref["subheadline"].lower()
 
