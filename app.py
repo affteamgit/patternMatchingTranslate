@@ -92,7 +92,7 @@ def get_anthropic_client():
     api_key = os.getenv("ANTHROPIC_API_KEY")
     return Anthropic(api_key=api_key) if api_key else None
 
-def translate_gpt(user_prompt):
+def translate_gpt(system_prompt, user_prompt):
     client = get_openai_client()
     if not client:
         st.error("OPENAI_API_KEY not found in .env")
@@ -101,7 +101,7 @@ def translate_gpt(user_prompt):
     response = client.chat.completions.create(
         model="gpt-5.1-2025-11-13",
         messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt}
         ],
         temperature=0.3,
@@ -109,7 +109,7 @@ def translate_gpt(user_prompt):
     )
     return json.loads(clean_json(response.choices[0].message.content))
 
-def translate_claude(user_prompt, model="opus"):
+def translate_claude(system_prompt, user_prompt, model="opus"):
     client = get_anthropic_client()
     if not client:
         st.error("ANTHROPIC_API_KEY not found in .env")
@@ -121,7 +121,7 @@ def translate_claude(user_prompt, model="opus"):
         model=model_id,
         max_tokens=2000,
         temperature=0.3,
-        system=SYSTEM_PROMPT,
+        system=system_prompt,
         messages=[{"role": "user", "content": user_prompt}]
     )
     return json.loads(clean_json(response.content[0].text))
@@ -142,6 +142,18 @@ def main():
             "Select Model",
             ["GPT-5.1", "Claude Opus 4.5", "Claude Sonnet 4.5"]
         )
+
+        # System Prompt Editor
+        with st.expander("✏️ Edit System Prompt", expanded=False):
+            system_prompt = st.text_area(
+                "System Prompt",
+                value=SYSTEM_PROMPT,
+                height=300,
+                help="Edit the system prompt that controls translation behavior"
+            )
+
+        if 'system_prompt' not in locals():
+            system_prompt = SYSTEM_PROMPT
 
         # Language selection
         selected_languages = st.multiselect(
@@ -175,11 +187,11 @@ def main():
                     with st.spinner(f"Translating to {language}..."):
                         try:
                             if model == "GPT-5.1":
-                                result = translate_gpt(user_prompt)
+                                result = translate_gpt(system_prompt, user_prompt)
                             elif model == "Claude Opus 4.5":
-                                result = translate_claude(user_prompt, "opus")
+                                result = translate_claude(system_prompt, user_prompt, "opus")
                             else:
-                                result = translate_claude(user_prompt, "sonnet")
+                                result = translate_claude(system_prompt, user_prompt, "sonnet")
 
                             # Display results
                             h_match = result["headline"].lower() == ref["headline"].lower()
