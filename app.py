@@ -505,35 +505,5 @@ def main():
                         except Exception as e:
                             st.error(f"Error: {e}")
 
-    # Sidebar
-    with st.sidebar:
-        st.header("ℹ️ About")
-        st.markdown("""
-        ## Pattern-Matching Translation
-
-        This tool uses a **pattern-matching approach** where the AI:
-        1. Receives a **gold standard reference** translation
-        2. **Replicates the exact pattern** used in that reference
-        3. Matches word-for-word, character-by-character
-
-        ### Results:
-        - **7/7 languages** matched 100% in testing
-        - Solves word-order issues
-        - No creative variation
-
-        ### Best For:
-        - Maintaining consistency across languages
-        - Replicating proven translations
-        - Quality assurance testing
-        """)
-
-        st.divider()
-
-        st.subheader("References Database")
-        for lang, ref in REFERENCES.items():
-            with st.expander(lang):
-                st.code(ref["headline"], language="text")
-                st.code(ref["subheadline"], language="text")
-
 if __name__ == "__main__":
     main()
