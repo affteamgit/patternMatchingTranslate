@@ -224,8 +224,8 @@ Respond ONLY with:
 }
 ```"""
 
-def create_user_prompt(language, source_headline, source_subheadline, ref_headline, ref_subheadline):
-    return f"""## PATTERN-BASED TRANSLATION TASK
+def create_user_prompt(language, source_headline, source_subheadline, ref_headline, ref_subheadline, additional_text=None):
+    base_prompt = f"""## PATTERN-BASED TRANSLATION TASK
 
 **TARGET LANGUAGE**: {language}
 
@@ -238,6 +238,21 @@ def create_user_prompt(language, source_headline, source_subheadline, ref_headli
 **GOLD STANDARD REFERENCE** (This is the ONLY acceptable translation pattern):
 - Headline: "{ref_headline}"
 - Subheadline: "{ref_subheadline}"
+"""
+
+    if additional_text and additional_text.strip():
+        additional_lines = [line.strip() for line in additional_text.strip().split('\n') if line.strip()]
+        if additional_lines:
+            base_prompt += f"""
+**ADDITIONAL TEXT TO TRANSLATE**:
+"""
+            for i, line in enumerate(additional_lines, 1):
+                base_prompt += f'{i}. "{line}"\n'
+
+            base_prompt += """
+For the additional text, apply the SAME tone, formality level, and cultural approach you learned from the reference translations above. Do NOT translate them literally - use the same pattern type (conceptual/idiomatic/literal) that the reference demonstrates."""
+
+    return base_prompt + """
 
 ## MANDATORY PATTERN ANALYSIS PROCESS
 
@@ -333,7 +348,16 @@ Before submitting, confirm:
 
 ### FINAL OUTPUT REQUIREMENT
 
-Respond ONLY with a JSON object in this exact format:
+Respond ONLY with a JSON object. If there is additional text, include it as an array:
+```json
+{{
+  "headline": "translated headline text",
+  "subheadline": "translated subheadline text",
+  "additional": ["translated text 1", "translated text 2", ...]
+}}
+```
+
+If there is NO additional text, omit the "additional" field:
 ```json
 {{
   "headline": "translated headline text",
@@ -439,6 +463,14 @@ def main():
         source_headline = st.text_input("Headline", "ZERO BS CASINO", max_chars=50)
         source_subheadline = st.text_input("Subheadline", "Cash rewards only", max_chars=50)
 
+        st.subheader("Additional Text to Translate (Optional)")
+        st.caption("The model will maintain the same tone, formality, and cultural approach from the reference translations")
+        additional_text = st.text_area(
+            "Enter additional sentences (one per line)",
+            placeholder="Example:\nPlay with confidence\nNo hidden terms\nInstant withdrawals",
+            height=100
+        )
+
         translate_btn = st.button("🚀 Translate", type="primary", use_container_width=True)
 
     with col2:
@@ -452,7 +484,7 @@ def main():
                     # Create prompt
                     user_prompt = create_user_prompt(
                         language, source_headline, source_subheadline,
-                        ref["headline"], ref["subheadline"]
+                        ref["headline"], ref["subheadline"], additional_text
                     )
 
                     # Display prompts and references
@@ -501,6 +533,20 @@ def main():
                                 st.success("Perfect match!")
                             else:
                                 st.error("Mismatch detected")
+
+                            # Display additional translations if present
+                            if "additional" in result and result["additional"]:
+                                st.subheader("Additional Translations")
+                                additional_lines = [line.strip() for line in additional_text.strip().split('\n') if line.strip()]
+                                for i, (original, translated) in enumerate(zip(additional_lines, result["additional"]), 1):
+                                    with st.container():
+                                        col_orig, col_trans = st.columns(2)
+                                        with col_orig:
+                                            st.caption(f"Original {i}")
+                                            st.code(original, language="text")
+                                        with col_trans:
+                                            st.caption(f"Translation {i}")
+                                            st.code(translated, language="text")
 
                         except Exception as e:
                             st.error(f"Error: {e}")
