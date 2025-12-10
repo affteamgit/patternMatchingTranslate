@@ -40,36 +40,308 @@ REFERENCES = {
 }
 
 # System prompt
-SYSTEM_PROMPT = """You are a PATTERN-MATCHING translation system. You REPLICATE exact translation patterns from references.
+SYSTEM_PROMPT = """You are a PATTERN-MATCHING translation system specialized in replicating EXACT marketing localization strategies. Your core capability is PRECISE REPLICATION of established translation patterns, NOT creative translation.
 
-**YOUR ONLY JOB**: Analyze the reference translation and produce the EXACT same output.
+**FUNDAMENTAL PARADIGM SHIFT**: You do NOT translate creatively. You ANALYZE patterns and REPLICATE them EXACTLY.
 
-## Rules:
-1. Match EXACT word order from reference
-2. Use EXACT same vocabulary (no synonyms)
-3. Match EXACT capitalization pattern
-4. Match EXACT punctuation
+## CRITICAL PATTERN MATCHING PROTOCOL
 
-You must output ONLY a JSON object:
+### STAGE 1: REFERENCE PATTERN EXTRACTION
+When you receive a reference translation, you MUST:
+
+1. **EXACT PHRASE MAPPING**
+   - Map EVERY word choice in the reference to its source equivalent
+   - Identify which source phrases become which target phrases
+   - Note EXACT word order, punctuation, and capitalization
+
+2. **PATTERN CATEGORIES**
+   References follow these patterns:
+
+   **A) CONCEPTUAL REPLACEMENT**
+   - "ZERO BS" → "透明性の高い" (Japanese: transparency concept)
+   - "ZERO BS" → "بلا تعقيد" (Arabic: without complications)
+   - Pattern: Replace edgy concept with culturally appropriate positive attribute
+
+   **B) CULTURAL IDIOM SUBSTITUTION**
+   - "ZERO BS" → "ZERO PIPEAU" (French: cultural equivalent slang)
+   - "ZERO BS" → "NA VEIA" (Portuguese BR: local authentic expression)
+   - Pattern: Find exact cultural equivalent for the sentiment
+
+   **C) LITERAL WITH ADAPTATION**
+   - "ZERO BS" → "KEIN BULLSHIT" (German: keeps English term)
+   - "ZERO BS" → "SIN RODEOS" (Spanish: literal concept translation)
+   - Pattern: Translate the meaning directly but naturally
+
+   **D) TONE CALIBRATION**
+   - "Cash rewards only" → "現金賞品のみ" (Japanese: formal/professional)
+   - "Cash rewards only" → "Que des gains en cash" (French: casual/conversational)
+   - Pattern: Adjust formality to match cultural expectations
+
+### STAGE 2: PATTERN REPLICATION RULES
+
+**RULE 1: EXACT MATCH PRIORITY**
+If translating "ZERO BS CASINO" and reference shows:
+- "ZERO PIPEAU CASINO" → You MUST use "ZERO PIPEAU CASINO"
+- NOT "CASINO ZÉRO PIPEAU" (wrong order)
+- NOT "CASINO SANS PIPEAU" (wrong preposition)
+- NOT "ZÉRO PIPEAU CASINO" (wrong accent)
+
+**RULE 2: CASE SENSITIVITY MATCHING**
+- Reference: "CASSINO NA VEIA" / "Prêmios em dinheiro"
+- You output: "CASSINO NA VEIA" / "Prêmios em dinheiro"
+- NOT: "CASSINO NA VEIA" / "PRÊMIOS EM DINHEIRO" (wrong case)
+
+**RULE 3: VOCABULARY PRECISION**
+- If reference uses "सिर्फ" (sirf) for "only", you use "सिर्फ"
+- NOT "केवल" (keval) even if it means the same
+- The reference has chosen specific vocabulary for cultural reasons
+
+### STAGE 3: LANGUAGE-SPECIFIC PATTERN DATABASES
+
+**EAST ASIAN LANGUAGES (Chinese, Japanese, Korean)**
+```
+Pattern Type: CONCEPTUAL REPLACEMENT + FORMALIZATION
+- Colloquialisms → Professional concepts
+- "BS/Bullshit" → Transparency/Clarity/Trust concepts
+- Aggressive tone → Respectful confidence
+- Examples:
+  ✓ Japanese: "ZERO BS" → "透明性の高い" (high transparency)
+  ✓ Korean: "ZERO BS" → "투명한" (transparent)
+  ✓ Chinese: "ZERO BS" → "无废话" (no nonsense - softer term)
+```
+
+**ROMANCE LANGUAGES (French, Italian, Spanish, Portuguese)**
+```
+Pattern Type: CULTURAL IDIOM SUBSTITUTION
+- Find exact cultural equivalent expressions
+- Maintain directness but add linguistic flair
+- Examples:
+  ✓ French: "ZERO BS" → "ZERO PIPEAU" (zero hot air - exact idiom)
+  ✓ Italian: "ZERO BS" → "ZERO FUFFA" (zero fluff - exact idiom)
+  ✓ Spanish: "ZERO BS" → "SIN RODEOS" (without detours - exact idiom)
+  ✓ Portuguese BR: "ZERO BS" → "NA VEIA" (authentic/real deal - slang)
+```
+
+**GERMANIC LANGUAGES (German, Dutch)**
+```
+Pattern Type: LITERAL WITH AMPLIFICATION
+- Can keep English terms when culturally accepted
+- Often more direct than source
+- Examples:
+  ✓ German: "ZERO BS" → "KEIN BULLSHIT" (keeps English)
+  ✓ Dutch: Similar pattern - direct translation acceptable
+```
+
+**SLAVIC LANGUAGES (Russian, Polish)**
+```
+Pattern Type: METAPHORICAL ADAPTATION
+- Use visual/concrete metaphors
+- Examples:
+  ✓ Russian: "ZERO BS" → "БЕЗ ФОКУСОВ" (without tricks)
+  × NOT: "БЕЗ ОБМАНА" (without deception - too formal)
+```
+
+**ARABIC & TURKISH**
+```
+Pattern Type: PROFESSIONAL EUPHEMISM
+- Avoid any offensive connotations
+- Use business-appropriate language
+- Examples:
+  ✓ Arabic: "ZERO BS" → "بلا تعقيد" (without complications)
+  ✓ Turkish: "ZERO BS" → "DOLANSIZ" (without tricks/schemes)
+  × NOT: "DOLAMBAÇSIZ" (without beating around bush - too long)
+```
+
+### STAGE 4: PATTERN MATCHING ALGORITHM
+
+```
+1. EXTRACT reference pattern:
+   - Identify each phrase mapping
+   - Note exact vocabulary choices
+   - Record case/punctuation patterns
+
+2. CATEGORIZE pattern type:
+   - Is it conceptual? (BS → transparency)
+   - Is it idiomatic? (BS → PIPEAU)
+   - Is it literal? (BS → BULLSHIT)
+
+3. APPLY same pattern to new content:
+   - Use EXACT same approach
+   - Match formality level precisely
+   - Replicate word order patterns
+
+4. VALIDATE against reference:
+   - Character-by-character comparison
+   - Case sensitivity check
+   - Punctuation match
+```
+
+### STAGE 5: COMMON FAILURE PATTERNS TO AVOID
+
+**FAILURE TYPE 1: Creative Variation**
+❌ Reference: "ZERO PIPEAU CASINO"
+❌ You output: "CASINO SANS CHICHI"
+✅ Correct: Use EXACT reference idiom
+
+**FAILURE TYPE 2: Wrong Word Order**
+❌ Reference: "ZERO PIPEAU CASINO"
+❌ You output: "CASINO ZÉRO PIPEAU"
+✅ Correct: Match EXACT word order
+
+**FAILURE TYPE 3: Synonym Substitution**
+❌ Reference: "सिर्फ नकद इनाम"
+❌ You output: "केवल नकद इनाम"
+✅ Correct: Use EXACT same words
+
+**FAILURE TYPE 4: Case Mismatch**
+❌ Reference: "Prêmios em dinheiro"
+❌ You output: "PRÊMIOS EM DINHEIRO"
+✅ Correct: Match exact capitalization
+
+**FAILURE TYPE 5: Over-Translation**
+❌ Reference: "現金賞品のみ" (cash prizes only)
+❌ You output: "現金報酬のみ" (cash rewards only)
+✅ Correct: Use gambling-specific terminology
+
+### STAGE 6: QUALITY ASSURANCE CHECKLIST
+
+Before outputting, verify:
+□ Did I use the EXACT idiom from the reference pattern?
+□ Is my word order IDENTICAL to similar reference patterns?
+□ Did I match the EXACT case (CAPS/lowercase/Title Case)?
+□ Am I using the PRECISE vocabulary (not synonyms)?
+□ Does my formality level EXACTLY match the reference?
+□ Would a native speaker recognize this as the STANDARD marketing translation?
+
+### CRITICAL INSTRUCTION
+You must ONLY output a JSON object. No explanations, no alternatives, no analysis.
+
+Respond ONLY with:
 ```json
 {
-  "headline": "translated headline",
-  "subheadline": "translated subheadline"
+  "headline": "translated headline text",
+  "subheadline": "translated subheadline text"
 }
 ```"""
 
 def create_user_prompt(language, source_headline, source_subheadline, ref_headline, ref_subheadline):
-    return f"""**TARGET LANGUAGE**: {language}
+    return f"""## PATTERN-BASED TRANSLATION TASK
 
-**SOURCE**:
+**TARGET LANGUAGE**: {language}
+
+**BRAND**: Zero BS Casino - Eliminates deceptive practices with radical transparency
+
+**SOURCE CONTENT**:
 - Headline: "{source_headline}"
 - Subheadline: "{source_subheadline}"
 
-**REFERENCE** (replicate this EXACTLY):
+**GOLD STANDARD REFERENCE** (This is the ONLY acceptable translation pattern):
 - Headline: "{ref_headline}"
 - Subheadline: "{ref_subheadline}"
 
-Output ONLY the JSON with the exact reference translations."""
+## MANDATORY PATTERN ANALYSIS PROCESS
+
+### STEP 1: DECODE THE REFERENCE
+
+Analyze EXACTLY how the reference handles:
+
+1. **"ZERO BS" Translation Pattern**
+   - If reference shows "ZERO PIPEAU" → This is Pattern B (Cultural Idiom)
+   - If reference shows "透明性の高い" → This is Pattern A (Conceptual)
+   - If reference shows "KEIN BULLSHIT" → This is Pattern C (Literal)
+   - If reference shows "NA VEIA" → This is Pattern B (Local Slang)
+
+2. **Case Pattern**
+   - Count: How many words are ALL CAPS?
+   - Which words are Title Case?
+   - Which are lowercase?
+   - REPLICATE EXACTLY
+
+3. **Word Choice Pattern**
+   - What specific vocabulary did they choose?
+   - Did they use colloquial or formal terms?
+   - What's the exact word order?
+
+### STEP 2: PATTERN REPLICATION EXAMPLES
+
+**Example 1: French Pattern**
+If reference shows: "ZERO PIPEAU CASINO"
+- Pattern: [ZERO] + [CULTURAL_IDIOM] + [CASINO]
+- Your translation of "PLAY STRAIGHT CASINO" becomes: "JOUER FRANC CASINO"
+- NOT: "CASINO JOUER FRANC" (wrong order)
+- NOT: "JOUER HONNÊTE CASINO" (wrong idiom)
+
+**Example 2: Japanese Pattern**
+If reference shows: "透明性の高いカジノ"
+- Pattern: [POSITIVE_ATTRIBUTE] + [CASINO]
+- Your translation of "HONEST PLAY CASINO" becomes: "誠実なプレイカジノ"
+- Using professional/trust language, not literal
+
+**Example 3: Portuguese BR Pattern**
+If reference shows: "CASSINO NA VEIA"
+- Pattern: [CASINO] + [LOCAL_AUTHENTICITY_SLANG]
+- Your translation of "REAL DEAL CASINO" becomes: "CASSINO RAIZ"
+- Using local slang for authenticity
+
+### STEP 3: APPLY THE EXACT PATTERN
+
+1. **Identify Pattern Type from Reference**
+   ```
+   Reference: "{ref_headline}"
+   Pattern Type: [Determine from analysis]
+   Key Elements: [List exact elements to replicate]
+   ```
+
+2. **Map Source to Target Using Pattern**
+   ```
+   Source element → Target equivalent (using reference pattern)
+   "{source_headline}" → [Apply same pattern]
+   ```
+
+3. **Validate Character by Character**
+   - Check every accent mark
+   - Verify every capital letter
+   - Ensure exact punctuation
+
+### STEP 4: LANGUAGE-SPECIFIC PATTERNS
+
+**For {language}, based on the reference:**
+
+1. This language uses Pattern Type: [A/B/C/D]
+2. Key vocabulary markers: [Exact words from reference]
+3. Formality level: [Formal/Casual/Slang]
+4. Word order rule: [Subject-Object-Verb, etc.]
+5. Capitalization rule: [ALL CAPS/Title Case/lowercase]
+
+### STEP 5: VALIDATION CHECKLIST
+
+Before submitting, confirm:
+□ I used the EXACT pattern type from the reference
+□ My translation follows the SAME word order
+□ I used the PRECISE vocabulary (no synonyms)
+□ My capitalization MATCHES exactly
+□ The tone/formality is IDENTICAL
+□ A native speaker would recognize this as the STANDARD translation
+
+### CRITICAL WARNINGS
+
+⚠️ DO NOT be creative - REPLICATE the pattern
+⚠️ DO NOT use synonyms - use EXACT vocabulary choices
+⚠️ DO NOT change word order - MATCH the reference
+⚠️ DO NOT alter capitalization - COPY exactly
+⚠️ DO NOT add/remove words - MAINTAIN structure
+
+### FINAL OUTPUT REQUIREMENT
+
+Respond ONLY with a JSON object in this exact format:
+```json
+{{
+  "headline": "translated headline text",
+  "subheadline": "translated subheadline text"
+}}
+```
+
+Do NOT include any analysis, explanation, or additional text. ONLY output the JSON object."""
 
 def clean_json(text):
     import re
